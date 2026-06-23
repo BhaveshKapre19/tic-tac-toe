@@ -10,6 +10,19 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.only(bottom: 16.0),
+          child: Text(
+            'Bhavesh',
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  fontWeight: FontWeight.w600,
+                  color: Theme.of(context).colorScheme.onSurfaceVariant,
+                ),
+          ),
+        ),
+      ),
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
@@ -18,10 +31,10 @@ class HomeScreen extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(
-                    Icons.grid_3x3_rounded,
-                    size: 80,
-                    color: Theme.of(context).colorScheme.primary,
+                  Image.asset(
+                    'assets/images/app_logo.png',
+                    width: 112,
+                    height: 112,
                   ),
                   const SizedBox(height: 24),
                   Text(
@@ -65,14 +78,18 @@ class HomeScreen extends StatelessWidget {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text(mode == GameMode.pvp ? 'Enter Player Names' : 'Enter Your Name'),
+          title: Text(
+            mode == GameMode.pvp ? 'Enter Player Names' : 'Enter Your Name',
+          ),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               TextField(
                 controller: p1Controller,
                 decoration: InputDecoration(
-                  labelText: mode == GameMode.pvp ? 'Player 1 Name (X)' : 'Your Name (X)',
+                  labelText: mode == GameMode.pvp
+                      ? 'Player 1 Name (X)'
+                      : 'Your Name (X)',
                 ),
               ),
               if (mode == GameMode.pvp) ...[
@@ -95,10 +112,11 @@ class HomeScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.of(context).pop();
                 context.read<GameProvider>().setGameMode(
-                  mode, 
-                  playerXName: p1Controller.text,
-                  playerOName: mode == GameMode.pvp ? p2Controller.text : null,
-                );
+                      mode,
+                      playerXName: p1Controller.text,
+                      playerOName:
+                          mode == GameMode.pvp ? p2Controller.text : null,
+                    );
                 Navigator.of(context).push(
                   MaterialPageRoute(builder: (context) => const GameScreen()),
                 );
