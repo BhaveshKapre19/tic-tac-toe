@@ -1,17 +1,48 @@
-# tic_tac_toe
+# Tic Tac Toe (Flutter)
 
-A new Flutter project.
+A lightweight Flutter implementation of the classic Tic Tac Toe game.
 
-## Getting Started
+This repository contains a small, well-structured Flutter app with:
 
-This project is a starting point for a Flutter application.
+- A local two-player mode
+- A single-player mode against a simple AI (`ai_service.dart`)
+- Clean separation of UI, game logic, and services (`lib/`)
+- Unit and widget tests under `test/`
 
-A few resources to get you started if this is your first Flutter project:
+**APK:** A compiled Android package is included in the repository. Download the APK directly here:
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+[Download tic-tac-toe APK](tic-tac-toe.apk)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Quick Start
+
+Prerequisites: install the Flutter SDK (stable channel).
+
+Run locally on a connected device or emulator:
+
+```bash
+flutter pub get
+flutter run
+```
+
+Build a release APK locally (optional):
+
+```bash
+flutter build apk --release
+```
+
+The generated APK from a local build will be placed under `build/app/outputs/flutter-apk/`.
+
+## Project Structure (high level)
+
+- `lib/` — app source: `models/`, `providers/`, `screens/`, `services/`, `widgets/`, `theme/`
+- `test/` — unit and widget tests
+- `assets/` — images and static resources
+
+## Tests
+
+Run tests with:
+
+```bash
+flutter test
+```
+
